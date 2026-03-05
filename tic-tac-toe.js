@@ -1,12 +1,12 @@
 function player(name) {
-    let currentMove = "";
     let currentScore = 0;
+    let playerSymbol = "";
     const getScore = () => currentScore;
     const addScore = () => { currentScore++;};
-    const addMove = (move) => {currentMove = move;};
-    const getCurrentMove = () => currentMove;
     const resetScore = () => currentScore = 0;
-    return {name, getCurrentMove, getScore, addScore, addMove, resetScore};
+    const setSymbol = (Symbol) => {playerSymbol = Symbol;};
+    const getSymbol = () => playerSymbol;
+    return {name, getScore, addScore, resetScore, setSymbol, getSymbol};
 };
 
 const player1 = player("james");
