@@ -64,6 +64,7 @@ const gameBoard = (()=>{
     let turnsPlayed = 0;
 
     const getTurnsPlayed = () => turnsPlayed;
+    const increaseTurnsPlayed = () => turnsPlayed++;
 
     const getGridSquareVal = (square) => gridSquares[square];
 
@@ -71,13 +72,56 @@ const gameBoard = (()=>{
 
     const showGridSquare = () => gridSquares;
 
-    const addSymbol = (square, sign) => {
-        turnsPlayed++;
-        gridSquares[square] = sign;
+    const addSymbol = (square, player) => {
+        increaseTurnsPlayed();
+        gridSquares[square] = player.getSymbol();
     };
 
+    const winCondition = () => {
+        Object.values(gameGrid).forEach(value => {
+            switch (value) {
+                case "xxx":
+                    if (player1.getSymbol() === value[0]) {
+                        console.log(`winner ${player1.name}`);
+                        player1.addScore();
+                    } else {
+                        console.log(`winner ${player2.name}`);
+                        player2.addScore;};
+                    break;
+                case "ooo":
+                    if (player1.getSymbol() === value[0]) {
+                        console.log(`winner ${player1.name}`);
+                        player1.addScore();
+                    } else { 
+                        console.log(`winner ${player2.name}`);
+                        player2.addScore;};
+                    break;
+                default:
+                    break;
+            };
+
+        })
+    };
+
+    
     return {addSymbol, getGridSquareVal, getBoardSection, showGridSquare, getTurnsPlayed, winCondition};
 })();
+
+function gameOver(obj){
+    if (obj.getTurnsPlayed() === 3) {
+        obj.winCondition();
+    };
+};
+
+player1.setSymbol("x");
+player2.setSymbol("o");
+
+gameBoard.addSymbol("a1", player1);
+gameBoard.addSymbol("a2", player1);
+gameBoard.addSymbol("a3", player1);
+
+gameOver(gameBoard);
+
 
 
 
