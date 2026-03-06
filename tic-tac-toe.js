@@ -16,50 +16,54 @@ const gameBoard = (()=>{
     
     let gridSquares = {
         a1: "",
-        a2: "a2",
-        a3: "a3",
-        b1: "b1",
-        b2: "b2",
-        b3: "b3",
-        c1: "c1",
-        c2: "c2",
-        c3: "c3",
+        a2: "",
+        a3: "",
+        b1: "",
+        b2: "",
+        b3: "",
+        c1: "",
+        c2: "",
+        c3: "",
     };
 
     let gameGrid = {
         get colA(){ 
-            return [gridSquares.a1, gridSquares.a2, gridSquares.a3];
+            return `${gridSquares.a1 + gridSquares.a2 + gridSquares.a3}`;
         },
 
         get colB(){
-            return [gridSquares.b1, gridSquares.b2, gridSquares.b3];
+            return `${gridSquares.b1 + gridSquares.b2 + gridSquares.b3}`;
         },
 
         get colC(){
-            return [gridSquares.c1, gridSquares.c2, gridSquares.c3];
+            return `${gridSquares.c1 + gridSquares.c2 + gridSquares.c3}`;
         },
 
         get row1(){
-            return [gridSquares.a1, gridSquares.b1, gridSquares.c1];
+            return `${gridSquares.a1 + gridSquares.b1 + gridSquares.c1}`;
         },
 
         get row2(){
-            return [gridSquares.a2, gridSquares.b2, gridSquares.c2];
+            return `${gridSquares.a2, gridSquares.b2, gridSquares.c2}`;
         },
 
         get row3(){
-            return [gridSquares.a3, gridSquares.b3, gridSquares.c3];
+            return `${gridSquares.a3, gridSquares.b3, gridSquares.c3}`;
         },
 
         get diagonal1(){
-            return [gridSquares.a3, gridSquares.b2, gridSquares.c1];
+            return `${gridSquares.a3, gridSquares.b2, gridSquares.c1}`;
         },
 
         get diagonal2(){
-            return [gridSquares.a1, gridSquares.b2, gridSquares.c3];
+            return `${gridSquares.a1, gridSquares.b2, gridSquares.c3}`;
         },
 
     };
+
+    let turnsPlayed = 0;
+
+    const getTurnsPlayed = () => turnsPlayed;
 
     const getGridSquareVal = (square) => gridSquares[square];
 
@@ -68,12 +72,21 @@ const gameBoard = (()=>{
     const showGridSquare = () => gridSquares;
 
     const addSymbol = (square, sign) => {
+        turnsPlayed++;
         gridSquares[square] = sign;
     };
 
-    return {addSymbol, getGridSquareVal, getBoardSection, showGridSquare};
-})();
+    const winCondition = () => {
+        const colA = gameGrid.colA;
+        let valuesColA = Object.values(colA).join("");
 
+        console.log(valuesColA);
+    };
+
+
+
+    return {addSymbol, getGridSquareVal, getBoardSection, showGridSquare, getTurnsPlayed, winCondition};
+})();
 
 
 
