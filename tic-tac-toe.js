@@ -44,19 +44,19 @@ const gameBoard = (()=>{
         },
 
         get row2(){
-            return `${gridSquares.a2, gridSquares.b2, gridSquares.c2}`;
+            return `${gridSquares.a2 + gridSquares.b2 + gridSquares.c2}`;
         },
 
         get row3(){
-            return `${gridSquares.a3, gridSquares.b3, gridSquares.c3}`;
+            return `${gridSquares.a3 + gridSquares.b3 + gridSquares.c3}`;
         },
 
         get diagonal1(){
-            return `${gridSquares.a3, gridSquares.b2, gridSquares.c1}`;
+            return `${gridSquares.a3 + gridSquares.b2 + gridSquares.c1}`;
         },
 
         get diagonal2(){
-            return `${gridSquares.a1, gridSquares.b2, gridSquares.c3}`;
+            return `${gridSquares.a1 + gridSquares.b2 + gridSquares.c3}`;
         },
 
     };
@@ -75,15 +75,6 @@ const gameBoard = (()=>{
         turnsPlayed++;
         gridSquares[square] = sign;
     };
-
-    const winCondition = () => {
-        const colA = gameGrid.colA;
-        let valuesColA = Object.values(colA).join("");
-
-        console.log(valuesColA);
-    };
-
-
 
     return {addSymbol, getGridSquareVal, getBoardSection, showGridSquare, getTurnsPlayed, winCondition};
 })();
